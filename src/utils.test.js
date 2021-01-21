@@ -71,6 +71,8 @@ test('create items from trucktimeline', () => {
   const order3 = "order3";
   const truck1 = "OOF692";
   const truck2 = "KYX004";
+  const start_time = "2020.02.01 10:00:00";
+  const end_time = "2020.02.01 18:35:00";
   
   const {trucks, orders} = {
     "trucks": [
@@ -78,15 +80,15 @@ test('create items from trucktimeline', () => {
         { "name": truck2, "assignedOrderId": [order3]},
     ],
     "orders": [
-        { "id": order1, "from": "2020.02.01 10:00:00", "to": "2020.02.01 18:35:00" },
-        { "id": order2, "from": "2020.02.01 19:27:00", "to": "2020.02.02 04:22:00" },
-        { "id": order3, "from": "2020.02.01 10:00:00", "to": "2020.02.02 01:20:00" },
+        { "id": order1, "from": start_time, "to": end_time },
+        { "id": order2, "from": start_time, "to": end_time },
+        { "id": order3, "from": start_time, "to": end_time },
     ]
   }
 
-  const item1 = createItem(order1, truck1, order1, moment("2020.02.01 10:00:00",DATEFORMAT), moment("2020.02.01 18:35:00", DATEFORMAT));
-  const item2 = createItem(order2, truck1, order2, moment("2020.02.01 19:27:00",DATEFORMAT), moment("2020.02.02 04:22:00", DATEFORMAT));
-  const item3 = createItem(order3, truck2, order3, moment("2020.02.01 10:00:00",DATEFORMAT), moment("2020.02.02 01:20:00", DATEFORMAT));
+  const item1 = createItem(order1, truck1, order1, moment(start_time,DATEFORMAT), moment(end_time, DATEFORMAT));
+  const item2 = createItem(order2, truck1, order2, moment(start_time,DATEFORMAT), moment(end_time, DATEFORMAT));
+  const item3 = createItem(order3, truck2, order3, moment(start_time,DATEFORMAT), moment(end_time, DATEFORMAT));
 
   const items = [item1, item2, item3];
 
