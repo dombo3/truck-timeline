@@ -15,6 +15,11 @@ class App extends React.Component {
     }
 
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
+  }
+
+  handleItemClick(itemId, _, time) {
+    alert(itemId);
   }
 
   handleFilterTextChange(filterText) {
@@ -40,6 +45,8 @@ class App extends React.Component {
             items={items}
             defaultTimeStart={moment(CURRENT_MOMENT).add(-12, 'hour')}
             defaultTimeEnd={moment(CURRENT_MOMENT).add(12, 'hour')}
+            itemTouchSendsClick={true}
+            onItemClick={this.handleItemClick}
           >
           <TimelineHeaders>
             <DateHeader
