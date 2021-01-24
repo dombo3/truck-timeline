@@ -1,10 +1,11 @@
 import React from 'react';
-import Timeline from 'react-calendar-timeline';
+import Timeline, { DateHeader, TimelineHeaders } from 'react-calendar-timeline';
 import SearchBar from './SearchBar';
 import trucktimeline from './trucktimeline.json';
 import moment from 'moment';
 import { buildGroups, buildItems } from './utils.js';
-import 'react-calendar-timeline/lib/Timeline.css'
+import 'react-calendar-timeline/lib/Timeline.css';
+import {CURRENT_MOMENT} from './constants.js';
 
 class App extends React.Component {
   constructor() {
@@ -37,9 +38,28 @@ class App extends React.Component {
           <Timeline
             groups={filteredGroups}
             items={items}
-            defaultTimeStart={moment().add(-12, 'hour')}
-            defaultTimeEnd={moment().add(12, 'hour')}
-          />
+            defaultTimeStart={moment(CURRENT_MOMENT).add(-12, 'hour')}
+            defaultTimeEnd={moment(CURRENT_MOMENT).add(12, 'hour')}
+          >
+          <TimelineHeaders>
+            <DateHeader
+            unit="primaryHeader"
+            intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
+                return <div {...getIntervalProps()} class="rct-dateHeader" onClick={null}>
+                  {intervalContext.intervalText}
+                </div>
+              }}
+            />
+            <DateHeader
+              intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
+                console.log(intervalContext);
+                return <div {...getIntervalProps()} class="rct-dateHeader" onClick={null}>
+                  {intervalContext.intervalText}
+                </div>
+              }}
+            />  
+          </TimelineHeaders>
+          </Timeline>
         </main>
       </div>
     );
