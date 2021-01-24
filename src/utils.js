@@ -13,6 +13,17 @@ const buildItems = function(trucks, orders) {
       title: `${id}`,
       start_time: moment(from, DATEFORMAT),
       end_time: moment(to, DATEFORMAT),
+      canMove: false,
+      canResize: false,
+      canChangeGroup: false,
+      itemProps: {
+        style: {
+          background: "#0E4E6C",
+          borderRadius: "5px",
+          overflow: "hidden",
+          textAlign: "center",
+        }
+      }
     })
   );
 }
