@@ -19,6 +19,14 @@ body {
   justify-content: space-between;
 }
 
+.rct-dateHeader {
+  background: transparent !important;
+}
+
+.rct-header-root {
+  background: transparent !important;
+}
+
 #search-bar {
   align-self: center;
 }
