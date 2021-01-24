@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input 
-            id="searchbar" 
+            id="search-bar" 
             type="text" 
             placeholder="Search for Trucks"
             value={this.props.filterText}

@@ -32,9 +32,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Truck Timeline</h1>
+          <SearchBar filterText={this.state.filterText} onFilterTextChange={this.handleFilterTextChange}/>
         </header>
         <main>
-          <SearchBar filterText={this.state.filterText} onFilterTextChange={this.handleFilterTextChange}/>
           <Timeline
             groups={filteredGroups}
             items={items}
@@ -52,7 +52,6 @@ class App extends React.Component {
             />
             <DateHeader
               intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
-                console.log(intervalContext);
                 return <div {...getIntervalProps()} class="rct-dateHeader" onClick={null}>
                   {intervalContext.intervalText}
                 </div>

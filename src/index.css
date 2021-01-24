@@ -1,8 +1,54 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  background-color: #626463;
+  color: #0E4E6C;
+  font-family: 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  padding: 0 8%;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#search-bar {
+  align-self: center;
+}
+
+#search-bar input {
+  font-family: inherit;
+  font-size: 100%;
+  border: 1px solid #0E4E6C;
+  padding: 5px 15px;
+  color: inherit;
+}
+
+.react-calendar-timeline .rct-vertical-lines .rct-vl {
+  border-left: none !important;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+  border-bottom: none !important;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-even {
+  background: transparent !important;
+}
+
+.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0,
+.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-6  {
+  background: inherit !important;
 }
