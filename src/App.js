@@ -7,7 +7,7 @@ import { buildGroups, buildItems } from './utils.js';
 import 'react-calendar-timeline/lib/Timeline.css';
 import {CURRENT_MOMENT} from './constants.js';
 
-import "./App.css";
+import "./App.scss";
 
 class App extends React.Component {
   constructor() {

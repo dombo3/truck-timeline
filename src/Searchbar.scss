@@ -1,8 +1,10 @@
+@import './shared.scss';
+
 #search-bar {
   align-self: center;
   font-family: inherit;
   font-size: 100%;
-  border: 1px solid #D0FC30;
+  border: 1px solid $secondary-color;
   padding: 5px 15px;
   color: inherit;
 }

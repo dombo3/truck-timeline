@@ -1,0 +1,51 @@
+@import './shared.scss';
+
+body {
+  margin: 0;
+  background-color: $background-primary;
+  color: $primary-color;
+  font-family: 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sidebar */
+main .react-calendar-timeline .rct-sidebar {
+  border-right: 3px solid $secondary-color;
+
+  .rct-sidebar-row {
+    border-bottom: none;
+  }
+
+  .rct-sidebar-row.rct-sidebar-row-odd {
+    background: $backgroun-secondary;
+  }
+}
+
+/*Timeline*/
+  /*Vertical lines*/
+main .react-calendar-timeline .rct-vertical-lines {
+  .rct-vl {
+    border-left: none;
+  }
+
+  .rct-vl.rct-day-0,
+  .rct-vl.rct-day-6 {
+    background: inherit;
+  }
+}
+
+  /*Horizontal lines*/
+main .react-calendar-timeline .rct-horizontal-lines {
+  .rct-hl-even,
+  .rct-hl-odd {
+    border-bottom: none;
+  }
+
+  .rct-hl-odd {
+    background: $backgroun-secondary;
+  }
+}
+

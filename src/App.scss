@@ -1,3 +1,5 @@
+@import './shared.scss';
+
 .App {
   padding: 0 8%;
 }
@@ -9,6 +11,6 @@
 }
 
 .App-title {
-  color: #D0FC30;
-  text-shadow: rgb(89, 85, 73) 1px 0 10px;
+  color: $secondary-color;
+  text-shadow: $primary-color 1px 0 10px;
 }
