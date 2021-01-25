@@ -1,6 +1,7 @@
 import React from 'react';
+import "./Searchbar.scss"
 
-class SearchBar extends React.Component {
+class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -20,9 +21,9 @@ class SearchBar extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input 
-            id="searchbar" 
+            id="search-bar" 
             type="text" 
-            placeholder="Search for Trucks"
+            placeholder="Search for Truck ID"
             value={this.props.filterText}
             onChange={this.handleChange}
             />
@@ -32,4 +33,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default Searchbar;
