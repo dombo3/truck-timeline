@@ -1,6 +1,6 @@
 import React from 'react';
 import Timeline, { DateHeader, TimelineHeaders } from 'react-calendar-timeline';
-import SearchBar from './SearchBar';
+import Searchbar from './Searchbar';
 import trucktimeline from './trucktimeline.json';
 import moment from 'moment';
 import { buildGroups, buildItems } from './utils.js';
@@ -18,6 +18,14 @@ class App extends React.Component {
     this.handleItemClick = this.handleItemSelect.bind(this);
   }
 
+  groupRenderer = ({ group }) => {
+    return (
+      <div className="custom-group" style={{textAlign:"center"}}>
+        <p className="title" style={{fontWeight: "700"}}>Truck-{group.title}</p>
+      </div>
+    )
+  }
+
   handleItemSelect(itemId, _, time) {
     alert(itemId);
   }
@@ -31,13 +39,13 @@ class App extends React.Component {
     const groups = buildGroups(trucks);
     const items = buildItems(trucks, orders);
     
-    const filteredGroups = groups.filter(group => group.id.indexOf(this.state.filterText) > -1);
+    const filteredGroups = groups.filter(group => group.id.toLowerCase().indexOf(this.state.filterText.toLocaleLowerCase()) > -1);
     
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Truck Timeline</h1>
-          <SearchBar filterText={this.state.filterText} onFilterTextChange={this.handleFilterTextChange}/>
+          <h1 style={{color: "#D0FC30", textShadow: "rgb(89, 85, 73) 1px 0 10px"}}>Truck Timeline</h1>
+          <Searchbar filterText={this.state.filterText} onFilterTextChange={this.handleFilterTextChange}/>
         </header>
         <main>
           <Timeline
@@ -45,24 +53,42 @@ class App extends React.Component {
             items={items}
             defaultTimeStart={moment(CURRENT_MOMENT).add(-12, 'hour')}
             defaultTimeEnd={moment(CURRENT_MOMENT).add(12, 'hour')}
-            itemTouchSendsClick={"true"}
             onItemSelect={this.handleItemSelect}
+            groupRenderer={this.groupRenderer}
             lineHeight={120}
           >
-          <TimelineHeaders>
+          <TimelineHeaders
+            style={{border:"none", fontWeight:"700"}}
+            calendarHeaderStyle= {{border: "none"}}
+          >
             <DateHeader
             unit="primaryHeader"
+            style={
+              {background: "transparent", textAlign: "center"}
+            }
             intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
-                return <div {...getIntervalProps()} class="rct-dateHeader" onClick={null}>
+                return <div {...getIntervalProps()} onClick={null}>
                   {intervalContext.intervalText}
                 </div>
               }}
             />
             <DateHeader
+              labelFormat={([startTime, endTime], unit, labelWidth, formatOptions) => {
+                if (labelWidth > 40) {
+                  return moment(startTime).format("HH:00");
+                } else {
+                  return moment(startTime).format("HH");
+                }
+              }}
               intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
-                return <div {...getIntervalProps()} class="rct-dateHeader" onClick={null}>
+                return (
+                <div 
+                  {...getIntervalProps()}
+                  onClick={null}
+                  style={{...getIntervalProps().style, fontSize: "0.8em"}}
+                >
                   {intervalContext.intervalText}
-                </div>
+                </div>)
               }}
             />  
           </TimelineHeaders>

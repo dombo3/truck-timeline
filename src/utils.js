@@ -2,7 +2,7 @@ import moment from 'moment';
 import {DATEFORMAT} from './constants';
 
 const buildGroups = function (trucks) {
-  return trucks.map(({name}) => ({id: name, title: `Truck-${name}`}));
+  return trucks.map(({name}) => ({id: name, title: `${name}`}));
 }
 
 const buildItems = function(trucks, orders) {
@@ -18,8 +18,9 @@ const buildItems = function(trucks, orders) {
       canChangeGroup: false,
       itemProps: {
         style: {
-          background: "#0E4E6C",
-          borderRadius: "5px",
+          background: "#595549",
+          borderRadius: "6px",
+          border: "3px solid #D0FC30",
           overflow: "hidden",
           textAlign: "center",
         }
