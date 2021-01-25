@@ -1,6 +1,7 @@
 import React from 'react';
-import Timeline, { DateHeader, TimelineHeaders } from 'react-calendar-timeline';
+import Timeline, { DateHeader, TimelineHeaders, TimelineMarkers, CustomMarker } from 'react-calendar-timeline';
 import Searchbar from './Searchbar';
+import MarkerToggle from './MarkerToggle';
 import trucktimeline from './trucktimeline.json';
 import moment from 'moment';
 import { buildGroups, buildItems } from './utils.js';
@@ -14,18 +15,19 @@ class App extends React.Component {
     super();
     this.state = {
       filterText: '',
+      showMarker: false,
     }
 
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleItemClick = this.handleItemSelect.bind(this);
-  }
-
-  handleItemSelect(itemId, _, time) {
-    alert(itemId);
+    this.toggleMarker = this.toggleMarker.bind(this);
   }
 
   handleFilterTextChange(filterText) {
     this.setState((state) => ({filterText: filterText}));
+  }
+
+  toggleMarker() {
+    this.setState((state) => ({showMarker: !state.showMarker}));
   }
 
   groupRenderer = ({ group }) => {
@@ -47,18 +49,20 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Truck Timeline</h1>
-          <Searchbar
-            filterText={this.state.filterText}
-            onFilterTextChange={this.handleFilterTextChange}
-          />
+          <div className="App-interact">
+            <Searchbar
+              filterText={this.state.filterText}
+              onFilterTextChange={this.handleFilterTextChange}
+            />
+            <MarkerToggle onClick={this.toggleMarker} showMarker={this.state.showMarker}/>
+          </div>
         </header>
-        <main>
+        <main className="App-timeline">
           <Timeline
             groups={filteredGroups}
             items={items}
             defaultTimeStart={moment(CURRENT_MOMENT).add(-12, 'hour')}
             defaultTimeEnd={moment(CURRENT_MOMENT).add(12, 'hour')}
-            onItemSelect={this.handleItemSelect}
             groupRenderer={this.groupRenderer}
             lineHeight={120}
           >
@@ -88,13 +92,22 @@ class App extends React.Component {
                 <div 
                   {...getIntervalProps()}
                   onClick={null}
-                  style={{...getIntervalProps().style, fontSize: "0.8em", textAlign: "center"}}
+                  style={{...getIntervalProps().style, fontSize: "0.8em"}}
                 >
                   {intervalContext.intervalText}
                 </div>)
               }}
             />  
           </TimelineHeaders>
+          <TimelineMarkers>
+            {this.state.showMarker &&
+              <CustomMarker date={moment(CURRENT_MOMENT)}>
+                {({ styles, date }) => {
+                  styles.backgroundColor = "#D0FC30";
+                  return <div style={styles}/>
+                }}
+              </CustomMarker>}
+          </TimelineMarkers>
           </Timeline>
         </main>
       </div>

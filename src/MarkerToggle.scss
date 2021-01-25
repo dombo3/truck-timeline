@@ -1,0 +1,23 @@
+@import './shared.scss';
+
+.marker-button {
+  border: 1px solid $secondary-color;
+  background-color: $background-secondary;
+  border-radius: 5px;
+  font-size: 0.8em;
+  font-family: inherit;
+  padding: 8px;
+  width: 200px;
+  align-self: flex-end;
+  font-weight: 700;
+  cursor: pointer;
+  color: #595549;
+}
+
+.marker-button:hover {
+  background-color: mix($background-secondary, $secondary-color);
+}
+
+.marker-button:active {
+  transform: scale(0.97);
+}

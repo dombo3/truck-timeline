@@ -14,3 +14,8 @@
   color: $secondary-color;
   text-shadow: $primary-color 1px 0 10px;
 }
+
+.App-interact {
+  display: flex;
+  flex-direction: column;
+}

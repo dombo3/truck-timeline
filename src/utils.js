@@ -23,6 +23,9 @@ const buildItems = function(trucks, orders) {
           border: "3px solid #D0FC30",
           overflow: "hidden",
           textAlign: "center",
+          fontSize: "1.2em",
+          textTransform: "capitalize",
+          letterSpacing: "0.1em",
         }
       }
     })
