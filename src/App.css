@@ -1,0 +1,14 @@
+.App {
+  padding: 0 8%;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App-title {
+  color: #D0FC30;
+  text-shadow: rgb(89, 85, 73) 1px 0 10px;
+}

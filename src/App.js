@@ -7,6 +7,8 @@ import { buildGroups, buildItems } from './utils.js';
 import 'react-calendar-timeline/lib/Timeline.css';
 import {CURRENT_MOMENT} from './constants.js';
 
+import "./App.css";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -18,20 +20,20 @@ class App extends React.Component {
     this.handleItemClick = this.handleItemSelect.bind(this);
   }
 
-  groupRenderer = ({ group }) => {
-    return (
-      <div className="custom-group" style={{textAlign:"center"}}>
-        <p className="title" style={{fontWeight: "700"}}>Truck-{group.title}</p>
-      </div>
-    )
-  }
-
   handleItemSelect(itemId, _, time) {
     alert(itemId);
   }
 
   handleFilterTextChange(filterText) {
     this.setState((state) => ({filterText: filterText}));
+  }
+
+  groupRenderer = ({ group }) => {
+    return (
+      <div className="group" style={{textAlign:"center"}}>
+        <p className="title" style={{fontWeight: "700", margin: "0"}}>Truck-{group.title}</p>
+      </div>
+    )
   }
 
   render() {
@@ -44,8 +46,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 style={{color: "#D0FC30", textShadow: "rgb(89, 85, 73) 1px 0 10px"}}>Truck Timeline</h1>
-          <Searchbar filterText={this.state.filterText} onFilterTextChange={this.handleFilterTextChange}/>
+          <h1 className="App-title">Truck Timeline</h1>
+          <Searchbar
+            filterText={this.state.filterText}
+            onFilterTextChange={this.handleFilterTextChange}
+          />
         </header>
         <main>
           <Timeline
@@ -58,18 +63,16 @@ class App extends React.Component {
             lineHeight={120}
           >
           <TimelineHeaders
-            style={{border:"none", fontWeight:"700"}}
+            style={{border:"none", fontWeight:"700", backgroundColor: "transparent"}}
             calendarHeaderStyle= {{border: "none"}}
           >
             <DateHeader
             unit="primaryHeader"
-            style={
-              {background: "transparent", textAlign: "center"}
-            }
+            style={{background: "transparent", textAlign: "center"}}
             intervalRenderer={({ getIntervalProps, intervalContext, data }) => {
                 return <div {...getIntervalProps()} onClick={null}>
-                  {intervalContext.intervalText}
-                </div>
+                          {intervalContext.intervalText}
+                      </div>
               }}
             />
             <DateHeader
@@ -85,7 +88,7 @@ class App extends React.Component {
                 <div 
                   {...getIntervalProps()}
                   onClick={null}
-                  style={{...getIntervalProps().style, fontSize: "0.8em"}}
+                  style={{...getIntervalProps().style, fontSize: "0.8em", textAlign: "center"}}
                 >
                   {intervalContext.intervalText}
                 </div>)

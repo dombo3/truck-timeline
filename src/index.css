@@ -9,50 +9,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-  padding: 0 8%;
-}
 
-.App-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
+/* Sidebar */
 main .react-calendar-timeline .rct-sidebar .rct-sidebar-row {
   border-bottom: none;
 }
 
-.rct-header-root {
-  background: transparent !important;
+main .react-calendar-timeline .rct-sidebar .rct-sidebar-row.rct-sidebar-row-odd {
+  background: rgba(65, 46, 46, 0.2);
 }
 
-.rct-sidebar {
-  border-right: 3px solid #D0FC30 !important;
+main .react-calendar-timeline .rct-sidebar {
+  border-right: 3px solid #D0FC30;
 }
 
-.react-calendar-timeline .rct-vertical-lines .rct-vl {
-  border-left: none !important;
+/*Timeline*/
+  /*Vertical lines*/
+main .react-calendar-timeline .rct-vertical-lines .rct-vl {
+  border-left: none;
 }
 
-.react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
-.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
-  border-bottom: none !important;
+main .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0,
+main .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-6  {
+  background: inherit;
 }
 
-.react-calendar-timeline .rct-sidebar .rct-sidebar-row.rct-sidebar-row-odd {
-  background: rgba(65, 46, 46, 0.2) !important;
+  /*Horizontal lines*/
+main .react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
+main .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+  border-bottom: none;
 }
 
-.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
-  background: rgba(65, 46, 46, 0.2) !important;
+main .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+  background: rgba(65, 46, 46, 0.2);
 }
 
-.react-calendar-timeline .rct-horizontal-lines .rct-hl-even {
-  background: transparent !important;
-}
-
-.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0,
-.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-6  {
-  background: inherit !important;
-}
