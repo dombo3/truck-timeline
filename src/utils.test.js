@@ -8,7 +8,7 @@ test('create group from trucks with one item', () => {
   
   const groups = buildGroups(input);
   
-  const expected = [{id: truckName, title: `Truck-${truckName}`}]
+  const expected = [{id: truckName, title: `${truckName}`}]
   
   expect(groups).toStrictEqual(expected);
 });
@@ -27,9 +27,9 @@ test('create groups from trucks with more item', () => {
   const groups = buildGroups(trucks);
   
   const expected = [
-    {id: truckName1, title: `Truck-${truckName1}`},
-    {id: truckName2, title: `Truck-${truckName2}`},
-    {id: truckName3, title: `Truck-${truckName3}`},
+    {id: truckName1, title: `${truckName1}`},
+    {id: truckName2, title: `${truckName2}`},
+    {id: truckName3, title: `${truckName3}`},
   ]
   
   expect(groups).toStrictEqual(expected);
@@ -93,7 +93,6 @@ test('create items from trucktimeline', () => {
   const items = [item1, item2, item3];
 
   expect(buildItems(trucks, orders)).toStrictEqual(items);
-
 });
 
 const createItem = function(id, group, title, start_time, end_time) {
@@ -103,5 +102,17 @@ const createItem = function(id, group, title, start_time, end_time) {
     title: title,
     start_time: start_time,
     end_time: end_time,
+    canChangeGroup: false,
+    canMove: false,
+    canResize: false,
+    itemProps: {
+      style: {
+        background: "#595549",
+        borderRadius: "6px",
+        border: "3px solid #D0FC30",
+        overflow: "hidden",
+        textAlign: "center",
+      }
+    }
   }
 }
